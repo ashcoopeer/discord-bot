@@ -1,16 +1,16 @@
 package com.juniorcoder.DiscordBot.messages.listeners;
 
-import com.juniorcoder.DiscordBot.messages.services.MessageService;
+import com.juniorcoder.DiscordBot.messages.services.CommandDelegateService;
 import com.juniorcoder.DiscordBot.utils.MessageUtils;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
 public class MainCommandMessageListener implements MessageCreateListener {
 
-    private final MessageService messageService;
+    private final CommandDelegateService commandDelegateService;
 
-    public MainCommandMessageListener(MessageService messageService) {
-        this.messageService = messageService;
+    public MainCommandMessageListener(CommandDelegateService commandDelegateService) {
+        this.commandDelegateService = commandDelegateService;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class MainCommandMessageListener implements MessageCreateListener {
 
         if (commandAndParameters.length > 0) {
             try {
-                this.messageService.executeCommand(commandAndParameters);
+                this.commandDelegateService.delegateCommand(commandAndParameters, messageCreateEvent);
             } catch (Exception e) {
 
             }
