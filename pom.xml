@@ -8,9 +8,9 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.juniorcoder</groupId>
+	<groupId>com.ashcoopeer</groupId>
 	<artifactId>DiscordBot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>DiscordBot</name>
 	<description>Discord Bot Template</description>
 	<properties>
