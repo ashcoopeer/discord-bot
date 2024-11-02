@@ -10,11 +10,18 @@ import java.io.Serializable;
 public class Command implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
+    @TableGenerator(
+            name="CommandGen",
+            table="SEQUENCE",
+            pkColumnName="SEQ_NAME",
+            valueColumnName="SEQ_COUNT",
+            pkColumnValue="C_IDENTIFIER",
+            allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "CommandGen")
+    @Column(name = "C_IDENTIFIER")
+    private Long identifier;
 
-    @Column(name = "NAME")
+    @Column(name = "C_NAME")
     private String name;
 
 }

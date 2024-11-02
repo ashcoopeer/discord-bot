@@ -9,5 +9,5 @@ public class CommandParameterDto {
     private String name;
     private String value;
     private String regex;
-    private int order;
+    private Long order;
 }

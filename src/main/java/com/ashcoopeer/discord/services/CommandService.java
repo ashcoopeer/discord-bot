@@ -5,7 +5,7 @@ import com.ashcoopeer.discord.dao.CommandRepository;
 import com.ashcoopeer.discord.dto.CommandDto;
 import com.ashcoopeer.discord.dto.CommandParameterDto;
 import com.ashcoopeer.discord.model.Command;
-import com.ashcoopeer.discord.model.CommandParameter;
+import com.ashcoopeer.discord.model.Parameter;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -44,13 +44,13 @@ public class CommandService extends CrudService<Command, CommandDto, Long> {
         CommandDto commandDto;
         if (commandOptional.isPresent()) {
             List<CommandParameterDto> commandParameterDtoList = new ArrayList<>();
-            List<CommandParameter> parameterList = commandParameterRepository.findByCommandId(commandOptional.get().getId());
+            List<Parameter> parameterList = commandParameterRepository.findByCommandId(commandOptional.get().getIdentifier());
 
             if (parameterList != null && !parameterList.isEmpty()) {
                 parameterList.forEach(commandParameter -> {
                     commandParameterDtoList.add(CommandParameterDto.builder()
                             .name(commandParameter.getName())
-                            .regex(commandParameter.getRegex())
+                            .regex(commandParameter.getRegularExpression())
                             .order(commandParameter.getOrder())
                             .build());
                 });

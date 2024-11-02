@@ -3,8 +3,13 @@ spring.application.name: DiscordBot
 spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
   datasource:
-    url: jdbc:h2:file:C:/Users/USER/Documents/DB
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://161.132.49.220:43306/DISCORD
+    driverClassName: com.mysql.cj.jdbc.Driver
     username: root
-    password: root
+    password: secret
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 50000

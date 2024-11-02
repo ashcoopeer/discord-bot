@@ -1,0 +1,1 @@
+insert into question(q_identifier, q_question) values (1, 'Pregunta de prueba?');
